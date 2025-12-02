@@ -15,7 +15,7 @@ import { tasksInitialState } from "./tasksInitialState";
  */
 
 const tasksSlice = createSlice({
-    name: tasks, //nombre del slice
+    name: 'tasks', //nombre del slice
     initialState: tasksInitialState,
 
     // Reducers: funciones que modifican el estado
@@ -47,7 +47,7 @@ const tasksSlice = createSlice({
             // Si NO existe → index será - 1
             if (index !== -1) {
                 state.items[index] = {
-                    ...state.items,
+                    ...state.items[index],
                     ...action.payload
                 }
             }

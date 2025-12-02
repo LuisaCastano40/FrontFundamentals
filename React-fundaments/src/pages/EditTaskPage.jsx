@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const EditTaskPage = () => {
+const EditTaskPage = () => {
   return (
     <div>EditTaskPage</div>
   )
 }
+
+export default EditTaskPage;
