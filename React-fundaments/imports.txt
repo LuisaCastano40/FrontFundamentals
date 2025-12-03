@@ -1,0 +1,8 @@
+Instalar:
+npm install react-router-dom @reduxjs/toolkit react-redux 
+@mui/material 
+@mui/icons-material 
+@emotion/react 
+@emotion/styled
+@fontsource/roboto
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react @fontsource/roboto
