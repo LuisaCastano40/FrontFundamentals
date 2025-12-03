@@ -1,18 +1,54 @@
-# React + Vite
+# 🧪 Configuración de Vitest en el proyecto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto utiliza **Vitest + React Testing Library** para pruebas unitarias, con soporte para JSDOM y jest-dom.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙️ Instalación
 
-## React Compiler
+```bash
+npm install --save-dev vitest jsdom @vitest/coverage-v8
+npm install --save-dev @testing-library/react @testing-library/dom @testing-library/jest-dom
+npm install --save-dev @testing-library/user-event
+```
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 🛠 Configuración (`vitest.config.js`)
 
-## Expanding the ESLint configuration
+```js
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/tests/setup.js',
+    coverage: {
+      reporter: ['text', 'html'],
+    },
+  },
+});
+```
+
+---
+
+## 📄 Archivo de setup: `src/tests/setup.js`
+
+```js
+import '@testing-library/jest-dom';
+```
+
+---
+
+## ▶️ Scripts disponibles
+
+```bash
+npm run test          # Ejecutar pruebas
+npm run test:watch    # Ejecutar en modo watch
+npm run test:ui       # Interfaz visual de tests
+npm run test:coverage # Generar reporte de cobertura
+```

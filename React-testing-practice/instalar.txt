@@ -1,0 +1,25 @@
+npm install --save-dev vitest jsdom @vitest/coverage-v8
+npm install --save-dev @testing-library/react @testing-library/dom @testing-library/jest-dom
+npm install --save-dev @testing-library/user-event
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/tests/setup.js',
+    coverage: {
+      reporter: ['text', 'html'],
+    },
+  },
+});
+
+"scripts": {
+  "test": "vitest",
+  "test:ui": "vitest --ui",
+  "test:watch": "vitest --watch",
+  "test:coverage": "vitest --coverage"
+}
